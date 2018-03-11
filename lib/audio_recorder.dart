@@ -35,6 +35,7 @@ class AudioRecorder {
     } else {
       extension = ".m4a"; // default value
     }
+
     return _channel.invokeMethod('start', {"path" : path, "extension" : extension});
   }
 
@@ -46,6 +47,9 @@ class AudioRecorder {
 
   static Future<bool> get isRecording =>
       _channel.invokeMethod('isRecording');
+
+  static Future<bool> get requestPermissions =>
+      _channel.invokeMethod('requestPermissions');
 
   static Future<bool> get hasPermissions =>
       _channel.invokeMethod('hasPermissions');

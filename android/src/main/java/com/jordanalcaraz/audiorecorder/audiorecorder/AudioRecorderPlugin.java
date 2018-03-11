@@ -72,6 +72,13 @@ public class AudioRecorderPlugin implements MethodCallHandler {
         recordingResult.put("audioOutputFormat", mExtension);
         result.success(recordingResult);
         break;
+      case "requestPermissions":
+        Log.d(LOG_TAG, "Requesting Permissions");
+        String[] PERMISSIONS = {Manifest.permission.RECORD_AUDIO, Manifest.permission.WRITE_EXTERNAL_STORAGE};
+        registrar.activity().requestPermissions(PERMISSIONS,1);
+        //Todo you want to use the callback onRequestPermissionsResult by implementing ActivityCompat.OnRequestPermissionsResultCallback
+        result.success(false);
+        break;
       case "isRecording":
         Log.d(LOG_TAG, "Get isRecording");
         result.success(isRecording);
